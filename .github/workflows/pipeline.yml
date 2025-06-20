@@ -55,7 +55,9 @@ jobs:
         -Denv="${{ secrets.ENV }}" \
         -Dappname="${{ secrets.APP_NAME }}" \
         -Danypoint.platform.client_id="${{ secrets.ENV_CLIENT_ID }}" \
-        -Danypoint.platform.client_secret="${{ secrets.ENV_CLIENT_SECRET }}"
+        -Danypoint.platform.client_secret="${{ secrets.ENV_CLIENT_SECRET }}" \
+        -Dmule.env="${{ secrets.MULE_ENV }}" \
+        -Dkey="${{ secrets.KEY }}"
         
          
   deployuat:
@@ -81,7 +83,9 @@ jobs:
         -Denv="${{ secrets.ENV }}" \
         -Dappname="${{ secrets.APP_NAME }}" \
         -Danypoint.platform.client_id="${{ secrets.ENV_CLIENT_ID }}" \
-        -Danypoint.platform.client_secret="${{ secrets.ENV_CLIENT_SECRET }}"
+        -Danypoint.platform.client_secret="${{ secrets.ENV_CLIENT_SECRET }}" \
+        -Dmule.env="${{ secrets.MULE_ENV }}" \
+        -Dkey="${{ secrets.KEY }}"
   
   deployprod:
     needs: deployuat
@@ -106,4 +110,6 @@ jobs:
         -Denv="${{ secrets.ENV }}" \
         -Dappname="${{ secrets.APP_NAME }}" \
         -Danypoint.platform.client_id="${{ secrets.ENV_CLIENT_ID }}" \
-        -Danypoint.platform.client_secret="${{ secrets.ENV_CLIENT_SECRET }}"
+        -Danypoint.platform.client_secret="${{ secrets.ENV_CLIENT_SECRET }}" \
+        -Dmule.env="${{ secrets.MULE_ENV }}" \
+        -Dkey="${{ secrets.KEY }}"
