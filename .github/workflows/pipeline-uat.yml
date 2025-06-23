@@ -32,7 +32,7 @@ jobs:
         
          
   deployuat:
-    needs: deploydev
+    needs: build
     runs-on: ubuntu-latest
     environment: uat
     steps:    
