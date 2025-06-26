@@ -51,7 +51,7 @@ jobs:
         restore-keys: |
           ${{ runner.os }}-maven-
     - name: Download shared settings.xml
-        run: |
+      run: |
           git clone --depth 1 https://github.com/Indrajith045/maven-settings-repo.git
           mkdir -p .maven
           cp maven-settings-repo/.maven/settings.xml .maven/settings.xml
