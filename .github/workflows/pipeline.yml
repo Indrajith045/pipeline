@@ -24,9 +24,15 @@ jobs:
           java-version: 17
       # - name: Build JAR
       #   run: mvn clean package -DmuleDeploy
+      - name: Download shared settings.xml
+        run: |
+          git clone --depth 1 https://github.com/your-org/maven-settings-repo.git
+          mkdir -p .maven
+          cp maven-settings-repo/.maven/settings.xml .maven/settings.xml
+
       - name: Publish to Exchange
         run: |
-          mvn deploy --settings .maven/settings.xml -DskipMunitTests \
+          mvn deploy -DskipMunitTests \
           -Danypoint.username="${{ secrets.USER }}" \
           -Danypoint.password="${{ secrets.PASS }}" 
 
@@ -45,10 +51,17 @@ jobs:
         path: ~/.m2/repository
         key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
         restore-keys: |
-          ${{ runner.os }}-maven-       
+          ${{ runner.os }}-maven-     
+     # Clone shared settings.xml
+    - name: Download shared settings.xml
+      run: |
+        git clone --depth 1 https://github.com/your-org/maven-settings-repo.git
+        mkdir -p .maven
+        cp maven-settings-repo/.maven/settings.xml .maven/settings.xml
+        
     - name: Deploy to dev
       run: |
-        mvn deploy --settings .maven/settings.xml -DskipMunitTests -DmuleDeploy \
+        mvn deploy -DskipMunitTests -DmuleDeploy \
         -Danypoint.username="${{ secrets.USER }}" \
         -Danypoint.password="${{ secrets.PASS }}" \
         -Danypoint.businessGroup="${{ secrets.ANYPOINT_ORG_ID }}" \
@@ -74,9 +87,16 @@ jobs:
         key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
         restore-keys: |
           ${{ runner.os }}-maven-
+     # Clone shared settings.xml
+    - name: Download shared settings.xml
+      run: |
+        git clone --depth 1 https://github.com/your-org/maven-settings-repo.git
+        mkdir -p .maven
+        cp maven-settings-repo/.maven/settings.xml .maven/settings.xml
+
     - name: Deploy to uat
       run: |
-        mvn deploy --settings .maven/settings.xml -DskipMunitTests -DmuleDeploy \
+        mvn deploy -DskipMunitTests -DmuleDeploy \
         -Danypoint.username="${{ secrets.USER }}" \
         -Danypoint.password="${{ secrets.PASS }}" \
         -Danypoint.businessGroup="${{ secrets.ANYPOINT_ORG_ID }}" \
@@ -101,9 +121,16 @@ jobs:
         key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
         restore-keys: |
           ${{ runner.os }}-maven-
+    # Clone shared settings.xml
+    - name: Download shared settings.xml
+      run: |
+        git clone --depth 1 https://github.com/your-org/maven-settings-repo.git
+        mkdir -p .maven
+        cp maven-settings-repo/.maven/settings.xml .maven/settings.xml
+
     - name: Deploy to prod
       run: |
-        mvn deploy --settings .maven/settings.xml -DskipMunitTests -DmuleDeploy \
+        mvn deploy -DskipMunitTests -DmuleDeploy \
         -Danypoint.username="${{ secrets.USER }}" \
         -Danypoint.password="${{ secrets.PASS }}" \
         -Danypoint.businessGroup="${{ secrets.ANYPOINT_ORG_ID }}" \
