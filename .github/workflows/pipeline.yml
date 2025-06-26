@@ -32,7 +32,7 @@ jobs:
 
       - name: Publish to Exchange
         run: |
-          mvn deploy -DskipMunitTests \
+          mvn deploy --settings .maven/settings.xml -DskipMunitTests \
           -Danypoint.username="${{ secrets.USER }}" \
           -Danypoint.password="${{ secrets.PASS }}" 
 
@@ -61,7 +61,7 @@ jobs:
         
     - name: Deploy to dev
       run: |
-        mvn deploy -DskipMunitTests -DmuleDeploy \
+        mvn deploy --settings .maven/settings.xml -DskipMunitTests -DmuleDeploy \
         -Danypoint.username="${{ secrets.USER }}" \
         -Danypoint.password="${{ secrets.PASS }}" \
         -Danypoint.businessGroup="${{ secrets.ANYPOINT_ORG_ID }}" \
@@ -96,7 +96,7 @@ jobs:
 
     - name: Deploy to uat
       run: |
-        mvn deploy -DskipMunitTests -DmuleDeploy \
+        mvn deploy --settings .maven/settings.xml -DskipMunitTests -DmuleDeploy \
         -Danypoint.username="${{ secrets.USER }}" \
         -Danypoint.password="${{ secrets.PASS }}" \
         -Danypoint.businessGroup="${{ secrets.ANYPOINT_ORG_ID }}" \
@@ -130,7 +130,7 @@ jobs:
 
     - name: Deploy to prod
       run: |
-        mvn deploy -DskipMunitTests -DmuleDeploy \
+        mvn deploy --settings .maven/settings.xml -DskipMunitTests -DmuleDeploy \
         -Danypoint.username="${{ secrets.USER }}" \
         -Danypoint.password="${{ secrets.PASS }}" \
         -Danypoint.businessGroup="${{ secrets.ANYPOINT_ORG_ID }}" \
