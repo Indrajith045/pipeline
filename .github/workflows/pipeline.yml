@@ -26,7 +26,7 @@ jobs:
       #   run: mvn clean package -DmuleDeploy
       - name: Download shared settings.xml
         run: |
-          git clone --depth 1 https://github.com/your-org/maven-settings-repo.git
+          git clone --depth 1 https://github.com/Indrajith045/maven-settings-repo.git
           mkdir -p .maven
           cp maven-settings-repo/.maven/settings.xml .maven/settings.xml
 
@@ -55,7 +55,7 @@ jobs:
      # Clone shared settings.xml
     - name: Download shared settings.xml
       run: |
-        git clone --depth 1 https://github.com/your-org/maven-settings-repo.git
+        git clone --depth 1 https://github.com/Indrajith045/maven-settings-repo.git
         mkdir -p .maven
         cp maven-settings-repo/.maven/settings.xml .maven/settings.xml
         
@@ -90,7 +90,7 @@ jobs:
      # Clone shared settings.xml
     - name: Download shared settings.xml
       run: |
-        git clone --depth 1 https://github.com/your-org/maven-settings-repo.git
+        git clone --depth 1 https://github.com/Indrajith045/maven-settings-repo.git
         mkdir -p .maven
         cp maven-settings-repo/.maven/settings.xml .maven/settings.xml
 
@@ -124,7 +124,7 @@ jobs:
     # Clone shared settings.xml
     - name: Download shared settings.xml
       run: |
-        git clone --depth 1 https://github.com/your-org/maven-settings-repo.git
+        git clone --depth 1 https://github.com/Indrajith045/maven-settings-repo.git
         mkdir -p .maven
         cp maven-settings-repo/.maven/settings.xml .maven/settings.xml
 
